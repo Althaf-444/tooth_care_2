@@ -57,12 +57,12 @@ class Treatment extends BaseModel
         );
     }
 
-    function deleteTreatment($id)
+    function  deleteById($id)
     {
-        $user = new Treatment();
-        $user->deleteRec($id);
+        $treatment = new Treatment();
+        $treatment->deleteRec($id);
 
-        if ($user) {
+        if ($treatment) {
             return true; // User udapted successfully
         } else {
             return false; // User update failed (likely due to database error)

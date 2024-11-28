@@ -328,19 +328,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
     exit;
 }
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id']) && isset($_GET['action']) && $_GET['action'] == 'delete_user') {
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['treatment_id']) && isset($_GET['action']) && $_GET['action'] == 'delete_treatment') {
     try {
-        $user_id = $_GET['id'];
-        $permission = $_GET['permission'];
+        $treatment_id = $_GET['treatment_id'];
 
-        $userModel = new Treatment();
+        $treatmentModel = new Treatment();
 
        
 
         // Proceed to delete the user if doctor deletion was successful or not needed
-        $userDeleted = $userModel->deleteTreatment($user_id);
+        $treatmentDeleted = $treatmentModel->deleteById($treatment_id);
 
-        if ($userDeleted) {
+        if ($treatmentDeleted) {
             echo json_encode(['success' => true, 'message' => 'User deleted successfully!']);
         } else {
             echo json_encode(['success' => false, 'message' => 'Failed to delete user.']);
